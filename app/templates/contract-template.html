@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        line-height: 1.4;
+        padding: 20px;
+      }
+
+      .header {
+        text-align: right;
+        font-size: 9px;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .contract-date {
+        text-align: right;
+        font-size: 10px;
+        margin-bottom: 15px;
+      }
+
+      .resort-selection {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 20px;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .checkbox {
+        width: 14px;
+        height: 14px;
+        border: 1px solid #000;
+        display: inline-block;
+        position: relative;
+      }
+
+      .checkbox.checked::after {
+        content: "✓";
+        position: absolute;
+        top: -3px;
+        left: 2px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .section {
+        margin-bottom: 15px;
+      }
+
+      .field {
+        display: flex;
+        margin-bottom: 8px;
+        font-size: 10px;
+      }
+
+      .field-label {
+        min-width: 140px;
+        font-weight: normal;
+      }
+
+      .field-value {
+        border-bottom: 1px solid #000;
+        flex: 1;
+        padding-left: 5px;
+      }
+
+      .venue-list {
+        margin: 10px 0;
+      }
+
+      .venue-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+        font-size: 10px;
+      }
+
+      .venue-checkbox {
+        width: 12px;
+        height: 12px;
+        border: 1px solid #000;
+        margin-right: 8px;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .venue-checkbox.checked::after {
+        content: "✓";
+        position: absolute;
+        top: -3px;
+        left: 1px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .venue-name {
+        width: 140px;
+      }
+
+      .venue-note {
+        flex: 1;
+        border-bottom: 1px solid #000;
+        padding: 0 5px;
+        margin: 0 10px;
+      }
+
+      .venue-amount {
+        width: 100px;
+        border-bottom: 1px solid #000;
+        text-align: right;
+        padding-right: 5px;
+      }
+
+      .note-text {
+        font-size: 9px;
+        font-style: italic;
+        margin: 5px 0;
+      }
+
+      .suppliers-section {
+        margin: 15px 0;
+      }
+
+      .suppliers-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 10px;
+      }
+
+      .suppliers-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .supplier-item {
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+      }
+
+      .supplier-checkbox {
+        width: 12px;
+        height: 12px;
+        border: 1px solid #000;
+        margin-right: 8px;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .supplier-checkbox.checked::after {
+        content: "✓";
+        position: absolute;
+        top: -3px;
+        left: 1px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .supplier-name {
+        width: 120px;
+      }
+
+      .supplier-default {
+        width: 50px;
+        text-align: right;
+      }
+
+      .supplier-amount {
+        width: 80px;
+        border-bottom: 1px solid #000;
+        text-align: right;
+        padding-right: 5px;
+        margin-left: 10px;
+      }
+
+      .total-section {
+        margin: 20px 0;
+        text-align: right;
+      }
+
+      .total-label {
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .total-amount {
+        display: inline-block;
+        width: 150px;
+        border-bottom: 2px solid #000;
+        text-align: right;
+        padding: 5px;
+        font-weight: bold;
+      }
+
+      .reminders {
+        margin-top: 20px;
+        font-size: 9px;
+      }
+
+      .reminders-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .reminders ul {
+        margin-left: 20px;
+      }
+
+      .reminders li {
+        margin-bottom: 5px;
+      }
+
+      .signatures {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .signature-block {
+        text-align: center;
+      }
+
+      .signature-line {
+        width: 250px;
+        border-bottom: 1px solid #000;
+        margin: 40px 0 5px 0;
+      }
+
+      .signature-label {
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      Block 1, Lot 2 & 4, Forest Hills Drive<br />
+      corner Continental St., Forest Hills<br />
+      Subdivision, Novaliches, Quezon City<br />
+      Contact #: 799 6048 / 0917 8222 208
+    </div>
+
+    <div class="contract-date">Contract Date: {{CONTRACT_DATE}}</div>
+
+    <div class="resort-selection">
+      <div class="checkbox-item">
+        <div class="checkbox {{VP1_CHECKED}}"></div>
+        <span>VILLA PRESCILLA RESORT 1</span>
+      </div>
+      <div class="checkbox-item">
+        <div class="checkbox {{VP2_CHECKED}}"></div>
+        <span>VILLA PRESCILLA RESORT 2</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="field">
+        <span class="field-label">EVENT DATE:</span>
+        <span class="field-value">{{EVENT_DATE}}</span>
+      </div>
+
+      <div class="field">
+        <span class="field-label">OCCASION:</span>
+        <span class="field-value">{{EVENT_NAME}}</span>
+      </div>
+
+      <div class="field">
+        <span class="field-label">CLIENT / REPRESENTATIVE:</span>
+        <span class="field-value">{{CLIENT_NAME}}</span>
+      </div>
+
+      <div class="field">
+        <span class="field-label">ADDRESS:</span>
+        <span class="field-value">{{CLIENT_ADDRESS}}</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div style="display: flex; gap: 20px; margin-bottom: 10px">
+        <div>
+          <div class="checkbox-item" style="margin-bottom: 5px">
+            <div class="checkbox {{DAY_CHECKED}}"></div>
+            <span>DAY TOUR:</span>
+            <span style="margin-left: 10px">{{DAY_TIME}}</span>
+          </div>
+          <div class="checkbox-item">
+            <div class="checkbox {{NIGHT_CHECKED}}"></div>
+            <span>NIGHT TOUR:</span>
+            <span style="margin-left: 10px">{{NIGHT_TIME}}</span>
+          </div>
+        </div>
+        <div>
+          <div class="field" style="margin-bottom: 5px">
+            <span style="min-width: 80px">NO. OF PAX:</span>
+            <span class="field-value" style="width: 100px"></span>
+          </div>
+          <div class="field">
+            <span style="min-width: 80px">CONTACT #:</span>
+            <span class="field-value" style="width: 100px"
+              >{{CLIENT_CONTACT}}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="venue-list">
+      {{VENUE_ITEMS}}
+
+      <div class="note-text">
+        ** Function Hall is 6 hrs + 2 hrs prep time only. Exceeding hrs will be
+        charged.
+      </div>
+    </div>
+
+    <div class="suppliers-section">
+      <div class="suppliers-title">OUTSIDE SUPPLIER'S CORKAGE FEES:</div>
+
+      <div class="suppliers-grid">
+        <div class="supplier-item">
+          <div class="supplier-checkbox {{CATERING_CHECKED}}"></div>
+          <span class="supplier-name">CATERING SERVICES</span>
+          <span class="supplier-default">3,000</span>
+          <span class="supplier-amount">Php {{CATERING_AMOUNT}}</span>
+        </div>
+
+        <div class="supplier-item">
+          <div class="supplier-checkbox {{MOBILE_BAR_CHECKED}}"></div>
+          <span class="supplier-name">MOBILE BAR</span>
+          <span class="supplier-default">2,000</span>
+          <span class="supplier-amount">Php {{MOBILE_BAR_AMOUNT}}</span>
+        </div>
+
+        <div class="supplier-item">
+          <div class="supplier-checkbox {{SOUNDS_LIGHTS_CHECKED}}"></div>
+          <span class="supplier-name">SOUNDS & LIGHTS</span>
+          <span class="supplier-default">1,500</span>
+          <span class="supplier-amount">Php {{SOUNDS_LIGHTS_AMOUNT}}</span>
+        </div>
+
+        <div class="supplier-item">
+          <div class="supplier-checkbox {{FOOD_CART_CHECKED}}"></div>
+          <span class="supplier-name">FOOD CART</span>
+          <span class="supplier-default">500</span>
+          <span class="supplier-amount">Php {{FOOD_CART_AMOUNT}}</span>
+        </div>
+
+        <div class="supplier-item">
+          <div class="supplier-checkbox {{PHOTOBOOTH_CHECKED}}"></div>
+          <span class="supplier-name">PHOTOBOOTH</span>
+          <span class="supplier-default">1,000</span>
+          <span class="supplier-amount">Php {{PHOTOBOOTH_AMOUNT}}</span>
+        </div>
+
+        <div class="supplier-item">
+          <div class="supplier-checkbox {{BAND_CHECKED}}"></div>
+          <span class="supplier-name">BAND</span>
+          <span class="supplier-default">1,500</span>
+          <span class="supplier-amount">Php {{BAND_AMOUNT}}</span>
+        </div>
+
+        <div class="supplier-item">
+          <div class="supplier-checkbox {{PROJECTOR_CHECKED}}"></div>
+          <span class="supplier-name">PROJECTOR</span>
+          <span class="supplier-default">1,000</span>
+          <span class="supplier-amount">Php {{PROJECTOR_AMOUNT}}</span>
+        </div>
+
+        <div class="supplier-item">
+          <div class="supplier-checkbox {{PHOTO_VIDEO_CHECKED}}"></div>
+          <span class="supplier-name">PHOTO/VIDEO</span>
+          <span class="supplier-default">1,000</span>
+          <span class="supplier-amount">Php {{PHOTO_VIDEO_AMOUNT}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-section">
+      <span class="total-label">TOTAL AMOUNT FOR VENUE</span>
+      <span class="total-amount">Php {{VENUE_TOTAL}}</span>
+    </div>
+
+    <div class="reminders">
+      <div class="reminders-title">IMPORTANT REMINDERS:</div>
+      <ul>
+        <li>
+          Full payment is required TWO WEEKS before your event. Payments are
+          NON-REFUNDABLE.
+        </li>
+        <li>
+          Every high electricity consumption (rice cooker, water dispenser,
+          electric stove, electric heater, iron, microwave, so on and so forth)
+          will be paid Php 500 each.
+        </li>
+        <li>
+          CORKAGE FEES must be paid by the client prior to the scheduled
+          occasion. Clients who refused to pay the said fees will not be allowed
+          to do any event services at Villa Prescilla Resort.
+        </li>
+      </ul>
+    </div>
+
+    <div class="signatures">
+      <div class="signature-block">
+        <div class="signature-label">Acknowledged by:</div>
+        <div class="signature-line"></div>
+        <div class="signature-label">Client's Signature over Printed Name</div>
+      </div>
+
+      <div class="signature-block">
+        <div class="signature-label">Reservation Confirmed by:</div>
+        <div class="signature-line"></div>
+        <div class="signature-label">
+          Villa Prescilla Resort & Events Services
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
