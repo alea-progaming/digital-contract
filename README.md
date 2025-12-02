@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Villa Prescilla Resort — Digital Contract Builder (PWA)
 
-## Getting Started
+A mobile-first, offline-first Progressive Web App designed to bring Villa Prescilla Resort’s contract workflow into the modern era. No more messy handwriting, lost papers, or frantic “Where did we file that?” moments. This tool helps administrators create, manage, and version contracts with confidence and speed.
 
-First, run the development server:
+## 🌐 Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Description
+This system streamlines the resort’s booking workflow by enabling admins to digitally produce and store client contracts. It offers a clean UI, predictable flow, and built-in version control — ensuring accuracy and integrity across all booking transactions.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### The Problem
+- Rate changes lead to corrections and erasures on paper contracts.
+- Physical copies get passed around, misplaced, or delayed in filing.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### The Solution
+- Provide a frictionless way to draft and update contracts without messy manual edits.
+- Eliminate the risk of losing important documents by storing everything digitally.
+- Improve income tracking with consistent, versioned data.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Primary Audience
+- Villa Prescilla Resort administrators
 
-## Learn More
+### Success Criteria
+- Contracts can be created in just a few minutes.
+- Any modification (amenity removal, supplier addition, discounts, etc.) is captured as a new version.
+- Older versions remain accessible and organized without clutter.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Core Features (MVP)
+- Authentication (admin-only access)
+- Create, edit, and delete contracts
+- Export contracts to PDF
+- **Built-in version control**
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧰 Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Frontend:** Next.js (optimized routing + PWA-friendly setup)
+- **Backend:** 
+- **Database:** 
+- **API / Integrations:**
+- **Libraries:**
+
